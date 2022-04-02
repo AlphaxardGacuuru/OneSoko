@@ -13,4 +13,9 @@ const Img = ({ src, width, height, imgClass, style, alt }) => {
 	)
 }
 
+Img.defaultProps = {
+	src: '/storage/img/android-chrome-512x512.png',
+	alt: 'image',
+}
+
 export default Img
