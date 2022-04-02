@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import Img from "../components/Img"
 
@@ -35,22 +36,24 @@ const Index = () => {
 									height="90em"
 									alt="Card image" />
 								<div className="">
-									<h5
-										className="m-0"
-										style={{
-											width: "150px",
-											whiteSpace: "nowrap",
-											overflow: "hidden",
-											textOverflow: "clip"
-										}}>Title</h5>
-									<p
-										className="card-text"
-										style={{
-											width: "150px",
-											whiteSpace: "nowrap",
-											overflow: "hidden",
-											textOverflow: "clip"
-										}}>Price</p>
+									<Link to={`/ad/:${item}`}>
+										<h5
+											className="m-0"
+											style={{
+												width: "150px",
+												whiteSpace: "nowrap",
+												overflow: "hidden",
+												textOverflow: "clip"
+											}}>Title</h5>
+										<p
+											className="card-text text-success"
+											style={{
+												width: "150px",
+												whiteSpace: "nowrap",
+												overflow: "hidden",
+												textOverflow: "clip"
+											}}>Price</p>
+									</Link>
 								</div>
 							</span>
 						))}

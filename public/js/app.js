@@ -69922,8 +69922,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _pages_Index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/Index */ "./resources/js/pages/Index.js");
-/* harmony import */ var _TopNav__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TopNav */ "./resources/js/components/TopNav.js");
+/* harmony import */ var _pages_AdShow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/AdShow */ "./resources/js/pages/AdShow.js");
+/* harmony import */ var _pages_Index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../pages/Index */ "./resources/js/pages/Index.js");
+/* harmony import */ var _TopNav__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TopNav */ "./resources/js/components/TopNav.js");
+
 
 
 
@@ -69932,11 +69934,17 @@ __webpack_require__.r(__webpack_exports__);
 
 function App() {
   var GLOBAL_STATE = {};
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TopNav__WEBPACK_IMPORTED_MODULE_4__["default"], GLOBAL_STATE), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["HashRouter"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TopNav__WEBPACK_IMPORTED_MODULE_5__["default"], GLOBAL_STATE), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: "/",
     exact: true,
     render: function render(props) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Index__WEBPACK_IMPORTED_MODULE_3__["default"], GLOBAL_STATE);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Index__WEBPACK_IMPORTED_MODULE_4__["default"], GLOBAL_STATE);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/ad/:id",
+    exact: true,
+    render: function render(props) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_AdShow__WEBPACK_IMPORTED_MODULE_3__["default"], GLOBAL_STATE);
     }
   }));
 }
@@ -70035,8 +70043,8 @@ var TopNav = function TopNav(props) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
     xmlns: "http://www.w3.org/2000/svg",
-    width: "30",
-    height: "30",
+    width: "20",
+    height: "20",
     fill: "currentColor",
     className: "bi bi-list",
     viewBox: "0 0 16 16"
@@ -70263,6 +70271,48 @@ var TopNav = function TopNav(props) {
 
 /***/ }),
 
+/***/ "./resources/js/pages/AdShow.js":
+/*!**************************************!*\
+  !*** ./resources/js/pages/AdShow.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Img */ "./resources/js/components/Img.js");
+
+
+
+var AdShow = function AdShow(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-12"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card",
+    style: {
+      width: "400px"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Img__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    className: "card-img-top",
+    src: "/storage/ads/4.jpg",
+    alt: "Card image"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+    className: "card-title"
+  }, "John Doe"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "card-text"
+  }, "Some example text."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit asperiores deleniti alias nihil libero error voluptatum, hic suscipit recusandae animi dolore nemo placeat tenetur id laboriosam veniam dignissimos obcaecati vel!Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa a quaerat fugiat dolorem voluptatum ducimus tempore similique possimus, quas optio porro ut magnam totam accusamus ab obcaecati dignissimos vero! Iste?Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam doloremque ipsa, perferendis saepe ducimus cum non? Sapiente, temporibus, eaque, earum quisquam non laudantium asperiores saepe autem sed iusto delectus voluptates."))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (AdShow);
+
+/***/ }),
+
 /***/ "./resources/js/pages/Index.js":
 /*!*************************************!*\
   !*** ./resources/js/pages/Index.js ***!
@@ -70274,7 +70324,9 @@ var TopNav = function TopNav(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Img */ "./resources/js/components/Img.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _components_Img__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Img */ "./resources/js/components/Img.js");
+
 
 
 
@@ -70296,7 +70348,7 @@ var Index = function Index() {
         display: "inline-block",
         textAlign: "center"
       }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Img__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Img__WEBPACK_IMPORTED_MODULE_2__["default"], {
       className: "card-img-top",
       src: "/storage/ads/1.jpg",
       width: "160em",
@@ -70304,6 +70356,8 @@ var Index = function Index() {
       alt: "Card image"
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: ""
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/ad/:".concat(item)
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
       className: "m-0",
       style: {
@@ -70313,14 +70367,14 @@ var Index = function Index() {
         textOverflow: "clip"
       }
     }, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: "card-text",
+      className: "card-text text-success",
       style: {
         width: "150px",
         whiteSpace: "nowrap",
         overflow: "hidden",
         textOverflow: "clip"
       }
-    }, "Price")));
+    }, "Price"))));
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-sm-1"
   }));
