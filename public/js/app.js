@@ -68177,6 +68177,41 @@ if (document.getElementById('app')) {
 
 /***/ }),
 
+/***/ "./resources/js/components/Img.js":
+/*!****************************************!*\
+  !*** ./resources/js/components/Img.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Img = function Img(_ref) {
+  var src = _ref.src,
+      width = _ref.width,
+      height = _ref.height,
+      imgClass = _ref.imgClass,
+      style = _ref.style,
+      alt = _ref.alt;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: src,
+    width: width,
+    height: height,
+    className: imgClass,
+    style: style,
+    alt: alt,
+    loading: "lazy"
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Img);
+
+/***/ }),
+
 /***/ "./resources/js/pages/Index.js":
 /*!*************************************!*\
   !*** ./resources/js/pages/Index.js ***!
@@ -68188,6 +68223,8 @@ if (document.getElementById('app')) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Img__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Img */ "./resources/js/components/Img.js");
+
 
 
 var Index = function Index() {
@@ -68200,42 +68237,11 @@ var Index = function Index() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "m-1 pb-2 card",
     style: {
-      borderRadius: "0px",
+      borderRadius: "20px",
       display: "inline-block",
       textAlign: "center"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-    className: "card-img-top",
-    src: "/storage/ads/1.jpg",
-    width: "160em",
-    height: "90em",
-    alt: "Card image"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card-body"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-    className: "card-title",
-    style: {
-      width: "150px",
-      whiteSpace: "nowrap",
-      overflow: "hidden",
-      textOverflow: "clip"
-    }
-  }, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "card-text",
-    style: {
-      width: "150px",
-      whiteSpace: "nowrap",
-      overflow: "hidden",
-      textOverflow: "clip"
-    }
-  }, "Price"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "m-1 pb-2 card",
-    style: {
-      borderRadius: "0px",
-      display: "inline-block",
-      textAlign: "center"
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Img__WEBPACK_IMPORTED_MODULE_1__["default"], {
     className: "card-img-top",
     src: "/storage/ads/1.jpg",
     width: "160em",
