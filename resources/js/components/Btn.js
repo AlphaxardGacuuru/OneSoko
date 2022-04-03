@@ -11,4 +11,8 @@ const Btn = ({ style, btnClass, text, onClick }) => {
 	)
 }
 
+Btn.defaultProps = {
+	btnClass: 'onesoko-btn',
+}
+
 export default Btn

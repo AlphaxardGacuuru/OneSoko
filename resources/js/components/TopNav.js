@@ -1,14 +1,90 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import Img from "../components/Img";
+
 const TopNav = (props) => {
 
 	const [menu, setMenu] = useState("")
 
+	const logout = (e) => {
+		e.preventDefault()
+
+		axios.get('/sanctum/csrf-cookie').then(() => {
+			axios.post(`${props.url}/api/logout`)
+				.then((res) => {
+					// Remove phone from localStorage
+					localStorage.removeItem("auth")
+					props.setMessage("Logged out")
+					// Update Auth
+					props.setAuth({
+						"name": "Guest",
+						"username": "@guest",
+						"pp": "profile-pics/male_avatar.png",
+						"account_type": "normal"
+					})
+				});
+		})
+	}
+
+	// Function to get to Privacy Policy
+	const onPrivacyPolicy = () => window.location.href = "https://www.iubenda.com/privacy-policy/38639633"
+
 	return (
 		<div>
 			<div className="d-flex justify-content-between top-nav">
-				<div className="p-2 text-light">One Soko</div>
+				<div className="p-2 flex-grow-1"><Link to="/" className="text-light">One Soko</Link></div>
+
+				{/* Avatar Dropdown */}
+				<div className="p-2 dropdown">
+					<Link
+						to="#"
+						role="button"
+						id="dropdownMenua"
+						data-toggle="dropdown"
+						aria-haspopup="true"
+						aria-expanded="false">
+						<Img
+							// src={props.auth.pp}
+							imgClass={"rounded-circle"}
+							width="25px"
+							height="25px"
+							alt="Avatar" />
+					</Link>
+					<div
+						className="dropdown-menu dropdown-menu-right m-0 p-0"
+						aria-labelledby="dropdownMenuButton">
+						<Link to={`/profile/props.auth.username`} className="p-3 dropdown-item border-bottom">
+							<h5>Name</h5>
+						</Link>
+						{/* <Link
+							to="#"
+							ref={btnAdd}
+							style={{ display: "none" }}
+							className="p-3 dropdown-item border-bottom">
+							<h6>Get App</h6>
+						</Link> */}
+						<Link to='/ad-create' className="p-3 dropdown-item border-bottom">
+							<h6>Advertise</h6>
+						</Link>
+						<Link to='/settings' className="p-3 dropdown-item border-bottom">
+							<h6>Settings</h6>
+						</Link>
+						<Link
+							to="#"
+							className="p-3 dropdown-item border-bottom"
+							title="Privacy Policy"
+							onClick={onPrivacyPolicy}>
+							<h6>Privacy Policy</h6>
+						</Link>
+						<Link
+							to="#"
+							className="p-3 dropdown-item"
+							onClick={logout}>
+							<h6>Logout</h6>
+						</Link>
+					</div>
+				</div>
 				<div
 					className="p-2 text-light"
 					style={{ cursor: "pointer" }}
@@ -83,7 +159,6 @@ const TopNav = (props) => {
 				<div className="d-flex justify-content-between">
 					<div>Mobile Phones & Tablets</div>
 					<div>
-
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="16"
@@ -93,7 +168,6 @@ const TopNav = (props) => {
 							viewBox="0 0 16 16">
 							<path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
 						</svg>
-
 					</div>
 				</div>
 				<div className="d-flex justify-content-between">

@@ -7,7 +7,7 @@ const AdShow = (props) => {
 		<div className="row">
 			<div className="col-sm-12">
 				<center>
-					<div className="card" style={{ width: "400px" }}>
+					<div className="card">
 						<Img
 							className="card-img-top"
 							src="/storage/ads/4.jpg"

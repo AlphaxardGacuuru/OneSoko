@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import Img from "../components/Img"
 
-const Index = () => {
+const Index = (props) => {
 
 	// Random array for dummy loading elements
 	const dummyArray = [
@@ -19,11 +19,11 @@ const Index = () => {
 			<div className="col-sm-1"></div>
 			<div className="col-sm-10">
 				<span>
-					{dummyArray
+					{props.ads
 						.map((item, key) => (
 							<span
 								key={key}
-								className="m-1 p-2 card"
+								className="m-1 card"
 								style={{
 									borderRadius: "20px",
 									display: "inline-block",
@@ -36,7 +36,7 @@ const Index = () => {
 									height="90em"
 									alt="Card image" />
 								<div className="">
-									<Link to={`/ad/:${item}`}>
+									<Link to={`/ad/${item}`}>
 										<h5
 											className="m-0"
 											style={{
