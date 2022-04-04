@@ -41,6 +41,7 @@ const AdCreate = (props) => {
 	const [pictures, setPictures] = useState("")
 
 	console.log(pictures)
+	console.log(props.message + props.errors)
 
 	// Get csrf token
 	const token = document.head.querySelector('meta[name="csrf-token"]');
@@ -72,7 +73,7 @@ const AdCreate = (props) => {
 					// Update Ads
 					axios.get(`${props.url}/api/ads`)
 						.then((res) => props.setAds(res.data))
-					setTimeout(() => history.push('/account'), 1000)
+					setTimeout(() => history.push('/'), 1000)
 				}).catch(err => {
 					const resErrors = err.response.data.errors
 					var resError
@@ -223,7 +224,7 @@ const AdCreate = (props) => {
 								<button type="reset" className="btn btn-danger onesoko-btn">reset</button>
 								<br />
 								<br />
-								<Link to="/videos" className="btn btn-dark onesoko-btn">account</Link>
+								<Link to="/videos" className="btn btn-dark onesoko-btn">go to account</Link>
 							</div>
 						</div>
 					</div>

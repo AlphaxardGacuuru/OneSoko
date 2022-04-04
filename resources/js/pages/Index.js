@@ -20,7 +20,7 @@ const Index = (props) => {
 			<div className="col-sm-10">
 				<span>
 					{props.ads
-						.map((item, key) => (
+						.map((ad, key) => (
 							<span
 								key={key}
 								className="m-1 card"
@@ -29,22 +29,26 @@ const Index = (props) => {
 									display: "inline-block",
 									textAlign: "center"
 								}}>
-								<Img
-									className="card-img-top"
-									src="/storage/ads/1.jpg"
-									width="160em"
-									height="90em"
-									alt="Card image" />
-								<div className="">
-									<Link to={`/ad/${item}`}>
+								<div className="thumbnail">
+									<Link to={`/ad/${ad.id}`}>
+										<Img
+											className="card-img-top"
+											src={`storage/${ad.pictures}`}
+											width="160em"
+											height="160em"
+											alt="Card image" />
+									</Link>
+								</div>
+								<div className="p-1">
+									<Link to={`/ad/${ad.id}`}>
 										<h5
-											className="m-0"
+											className="ml-2 mb-0"
 											style={{
-												width: "150px",
+												width: "140px",
 												whiteSpace: "nowrap",
 												overflow: "hidden",
 												textOverflow: "clip"
-											}}>Title</h5>
+											}}>{ad.title}</h5>
 										<p
 											className="card-text text-success"
 											style={{
@@ -52,7 +56,7 @@ const Index = (props) => {
 												whiteSpace: "nowrap",
 												overflow: "hidden",
 												textOverflow: "clip"
-											}}>Price</p>
+											}}>KES {ad.price}</p>
 									</Link>
 								</div>
 							</span>

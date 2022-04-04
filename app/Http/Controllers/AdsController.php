@@ -38,7 +38,7 @@ class AdsController extends Controller
     {
         if ($request->hasFile('filepond')) {
             /* Handle pictures upload */
-            $pictures = $request->file('filepond')->store('public/ads');
+            $pictures = $request->file('filepond')->store('public/ad-pictures');
             $pictures = substr($pictures, 7);
 
             return $pictures;
