@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import axios from 'axios';
 
 import Btn from '../components/Btn'
@@ -30,7 +30,13 @@ registerPlugin(
 	FilePondPluginFileValidateSize
 );
 
-const AdCreate = (props) => {
+const AdEdit = (props) => {
+
+	// Get id from URL
+	const { id } = useParams();
+
+	// Fetch ad
+	const AdToEdit = props.ads.find((ad) => ad.id == id)
 
 	// Declare states
 	const [title, setTitle] = useState("")
@@ -41,7 +47,6 @@ const AdCreate = (props) => {
 	const [pictures, setPictures] = useState("")
 
 	console.log(pictures)
-	console.log(props.message + props.errors)
 
 	// Get csrf token
 	const token = document.head.querySelector('meta[name="csrf-token"]');
@@ -94,8 +99,7 @@ const AdCreate = (props) => {
 			<div className="col-1"></div>
 			<div className="col-10">
 				<div className="contact-form text-center call-to-action-content wow fadeInUp" data-wow-delay="0.5s">
-					<h2>Upload your Ad</h2>
-					<h5>It's free</h5>
+					<h2>Edit your Ad</h2>
 					<br />
 					<div className="form-group">
 						<form onSubmit={onSubmit}>
@@ -103,7 +107,7 @@ const AdCreate = (props) => {
 								type="text"
 								name="title"
 								className="form-control"
-								placeholder="Title"
+								placeholder={AdToEdit && AdToEdit.title}
 								required={true}
 								onChange={(e) => { setTitle(e.target.value) }} />
 							<br />
@@ -112,10 +116,10 @@ const AdCreate = (props) => {
 							<select
 								name='category'
 								className='form-control'
-								placeholder='Select Category'
+								placeholder={AdToEdit && AdToEdit.category}
 								required={true}
 								onChange={(e) => { setCategory(e.target.value) }}>
-								<option defaultValue value="">Select Category</option>
+								<option defaultValue value="">{AdToEdit && AdToEdit.category}</option>
 								<option value="Vehicles">Vehicles</option>
 								<option value="Property">Property</option>
 								<option value="Mobile Phones & Tablets">Mobile Phones & Tablets</option>
@@ -129,7 +133,7 @@ const AdCreate = (props) => {
 								<option value="Jobs">Jobs</option>
 								<option value="Babies & Kids">Babies & Kids</option>
 								<option value="Animals & Pets">Animals & Pets</option>
-								<option value="Agriculture & Food<">Agriculture & Food</option>
+								<option value="Agriculture & Food">Agriculture & Food</option>
 								<option value="Commercial Equipment & Tools">Commercial Equipment & Tools</option>
 								<option value="Repair & Construction">Repair & Construction</option>
 							</select>
@@ -140,7 +144,7 @@ const AdCreate = (props) => {
 								type="text"
 								name="features"
 								className="form-control"
-								placeholder="Features"
+								placeholder={AdToEdit && AdToEdit.features}
 								required={true}
 								onChange={(e) => setFeatures(e.target.value)} />
 							<br />
@@ -150,7 +154,7 @@ const AdCreate = (props) => {
 								type="text"
 								name="description"
 								className="form-control"
-								placeholder="Say something about your Ad"
+								placeholder={AdToEdit && AdToEdit.description}
 								cols="30"
 								rows="10"
 								required={true}
@@ -163,7 +167,7 @@ const AdCreate = (props) => {
 								type="number"
 								name="price"
 								className="form-control"
-								placeholder="Price"
+								placeholder={AdToEdit && AdToEdit.price}
 								required={true}
 								onChange={(e) => setPrice(e.target.value)} />
 							<br />
@@ -232,4 +236,4 @@ const AdCreate = (props) => {
 	)
 }
 
-export default AdCreate
+export default AdEdit

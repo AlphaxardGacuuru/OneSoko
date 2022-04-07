@@ -8,6 +8,7 @@ import Messages from './Messages';
 import Index from '../pages/Index'
 import AdShow from '../pages/AdShow';
 import AdCreate from '../pages/AdCreate';
+import AdEdit from '../pages/AdEdit';
 
 function App() {
 
@@ -66,6 +67,7 @@ function App() {
 	}, [])
 
 	const GLOBAL_STATE = {
+		getLocalStorage, setLocalStorage,
 		url,
 		login, setLogin,
 		auth, setAuth,
@@ -81,6 +83,7 @@ function App() {
 			<Route path="/" exact render={(props) => (<Index {...GLOBAL_STATE} />)} />
 			<Route path="/ad/:id" exact render={(props) => (<AdShow {...GLOBAL_STATE} />)} />
 			<Route path="/ad-create" exact render={(props) => (<AdCreate {...GLOBAL_STATE} />)} />
+			<Route path="/ad-edit/:id" exact render={(props) => (<AdEdit {...GLOBAL_STATE} />)} />
 
 			<Messages {...GLOBAL_STATE} />
 		</Router>
