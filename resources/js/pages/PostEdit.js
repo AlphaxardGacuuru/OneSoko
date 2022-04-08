@@ -30,13 +30,13 @@ registerPlugin(
 	FilePondPluginFileValidateSize
 );
 
-const AdEdit = (props) => {
+const PostEdit = (props) => {
 
 	// Get id from URL
 	const { id } = useParams();
 
-	// Fetch ad
-	const AdToEdit = props.ads.find((ad) => ad.id == id)
+	// Fetch post
+	const postToEdit = props.posts.find((post) => post.id == id)
 
 	// Declare states
 	const [title, setTitle] = useState("")
@@ -47,15 +47,15 @@ const AdEdit = (props) => {
 	const [pictures, setPictures] = useState("")
 
 	// Get csrf token
-	const token = document.head.querySelector('meta[name="csrf-token"]');
+	const token = document.hepost.querySelector('meta[name="csrf-token"]');
 
 	// Declare new FormData object for form data
 	const formData = new FormData();
 
 	const onSubmit = (e) => {
 		e.preventDefault()
-console.log(id)
-		// Add form data to FormData object
+		
+		// Postd form data to FormData object
 		formData.append("title", title);
 		formData.append("category", category);
 		formData.append("features", features);
@@ -64,15 +64,15 @@ console.log(id)
 		formData.append("price", price);
 		formData.append("pictures", pictures);
 
-		// Send data to AdsController
+		// Send data to PostsController
 		// Get csrf cookie from Laravel inorder to send a POST request
 		axios.get('sanctum/csrf-cookie').then(() => {
-			axios.put(`${props.url}/api/ads/${id}`, formData)
+			axios.put(`${props.url}/api/posts/${id}`, formData)
 				.then((res) => {
 					props.setMessage(res.data)
-					// Update Ads
-					axios.get(`${props.url}/api/ads`)
-						.then((res) => props.setAds(res.data))
+					// Update Posts
+					axios.get(`${props.url}/api/posts`)
+						.then((res) => props.setPosts(res.data))
 				}).catch((err) => {
 					const resErrors = err.response.data.errors
 					var resError
@@ -92,8 +92,8 @@ console.log(id)
 		<div className="row">
 			<div className="col-1"></div>
 			<div className="col-10">
-				<div className="contact-form text-center call-to-action-content wow fadeInUp" data-wow-delay="0.5s">
-					<h2>Edit your Ad</h2>
+				<div className="contact-form text-center call-to-action-content wow fposteInUp" data-wow-delay="0.5s">
+					<h2>Edit your Post</h2>
 					<br />
 					<div className="form-group">
 						<form onSubmit={onSubmit}>
@@ -101,7 +101,7 @@ console.log(id)
 								type="text"
 								name="title"
 								className="form-control"
-								placeholder={AdToEdit && AdToEdit.title}
+								placeholder={postToEdit && postToEdit.title}
 								onChange={(e) => { setTitle(e.target.value) }} />
 							<br />
 							<br />
@@ -109,9 +109,9 @@ console.log(id)
 							<select
 								name='category'
 								className='form-control'
-								placeholder={AdToEdit && AdToEdit.category}
+								placeholder={postToEdit && postToEdit.category}
 								onChange={(e) => { setCategory(e.target.value) }}>
-								<option defaultValue value="">{AdToEdit && AdToEdit.category}</option>
+								<option defaultValue value="">{postToEdit && postToEdit.category}</option>
 								<option value="Vehicles">Vehicles</option>
 								<option value="Property">Property</option>
 								<option value="Mobile Phones & Tablets">Mobile Phones & Tablets</option>
@@ -136,7 +136,7 @@ console.log(id)
 								type="text"
 								name="features"
 								className="form-control"
-								placeholder={AdToEdit && AdToEdit.features}
+								placeholder={postToEdit && postToEdit.features}
 								onChange={(e) => setFeatures(e.target.value)} />
 							<br />
 							<br />
@@ -145,7 +145,7 @@ console.log(id)
 								type="text"
 								name="description"
 								className="form-control"
-								placeholder={AdToEdit && AdToEdit.description}
+								placeholder={postToEdit && postToEdit.description}
 								cols="30"
 								rows="10"
 								onChange={(e) => setDescription(e.target.value)}>
@@ -157,7 +157,7 @@ console.log(id)
 								type="number"
 								name="price"
 								className="form-control"
-								placeholder={AdToEdit && AdToEdit.price}
+								placeholder={postToEdit && postToEdit.price}
 								onChange={(e) => setPrice(e.target.value)} />
 							<br />
 							<br />
@@ -175,21 +175,21 @@ console.log(id)
 								server={{
 									url: `${props.url}/api`,
 									process: {
-										url: "/ads",
-										headers: { 'X-CSRF-TOKEN': token.content },
-										onload: res => setPictures(res),
+										url: "/posts",
+										heposters: { 'X-CSRF-TOKEN': token.content },
+										onlopost: res => setPictures(res),
 										onerror: (err) => console.log(err.response.data)
 									},
 									revert: {
-										url: `/ads/${pictures.substr(4)}`,
-										headers: { 'X-CSRF-TOKEN': token.content },
-										onload: res => props.setMessage(res),
+										url: `/posts/${pictures.substr(4)}`,
+										heposters: { 'X-CSRF-TOKEN': token.content },
+										onlopost: res => props.setMessage(res),
 									},
 								}} />
 							<br />
 							<br />
 
-							<Btn btnClass="btn btn-success onesoko-btn" text="edit advertisement" />
+							<Btn btnClass="btn btn-success onesoko-btn" text="edit post" />
 						</form>
 						<br />
 						<br />
@@ -206,4 +206,4 @@ console.log(id)
 	)
 }
 
-export default AdEdit
+export default PostEdit

@@ -8,9 +8,9 @@ import Messages from './Messages';
 import Index from '../pages/Index'
 import Account from '../pages/Account'
 
-import AdShow from '../pages/AdShow';
-import AdCreate from '../pages/AdCreate';
-import AdEdit from '../pages/AdEdit';
+import AdShow from '../pages/PostShow';
+import AdCreate from '../pages/PostCreate';
+import AdEdit from '../pages/PostEdit';
 
 function App() {
 
@@ -47,7 +47,7 @@ function App() {
 	const [message, setMessage] = useState('')
 	const [errors, setErrors] = useState([])
 
-	const [ads, setAds] = useState([])
+	const [posts, setPosts] = useState([])
 
 	// Reset Messages and Errors to null after 3 seconds
 	if (errors.length > 0 || message.length > 0) {
@@ -58,11 +58,11 @@ function App() {
 
 	// Fetch data on page load
 	useEffect(() => {
-		// Fetch Ads
-		axios.get(`/api/ads`)
+		// Fetch Posts
+		axios.get(`/api/posts`)
 			.then((res) => {
-				setAds(res.data)
-			}).catch(() => setErrors(["Failed to fetch ads"]))
+				setPosts(res.data)
+			}).catch(() => setErrors(["Failed to fetch posts"]))
 
 		console.log("effect rendered")
 
@@ -75,7 +75,7 @@ function App() {
 		auth, setAuth,
 		message, setMessage,
 		errors, setErrors,
-		ads, setAds,
+		posts, setPosts,
 	}
 
 	return (
@@ -85,9 +85,9 @@ function App() {
 			<Route path="/" exact render={(props) => (<Index {...GLOBAL_STATE} />)} />
 			<Route path="/account/:id" exact render={(props) => (<Account {...GLOBAL_STATE} />)} />
 
-			<Route path="/ad/:id" exact render={(props) => (<AdShow {...GLOBAL_STATE} />)} />
-			<Route path="/ad-create" exact render={(props) => (<AdCreate {...GLOBAL_STATE} />)} />
-			<Route path="/ad-edit/:id" exact render={(props) => (<AdEdit {...GLOBAL_STATE} />)} />
+			<Route path="/post/:id" exact render={(props) => (<AdShow {...GLOBAL_STATE} />)} />
+			<Route path="/post-create" exact render={(props) => (<AdCreate {...GLOBAL_STATE} />)} />
+			<Route path="/post-edit/:id" exact render={(props) => (<AdEdit {...GLOBAL_STATE} />)} />
 
 			<Messages {...GLOBAL_STATE} />
 		</Router>

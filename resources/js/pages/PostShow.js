@@ -4,15 +4,15 @@ import { Link, useParams } from 'react-router-dom'
 import Img from '../components/Img'
 import Btn from '../components/Btn'
 
-const AdShow = (props) => {
+const PostShow = (props) => {
 
 	// Get id from URL
 	const { id } = useParams();
 
-	var adToShow = []
+	var postToShow = []
 
-	if (props.ads.find((ad) => ad.id == id)) {
-		var adToShow = props.ads.find((ad) => ad.id == id)
+	if (props.posts.find((ad) => ad.id == id)) {
+		var postToShow = props.posts.find((ad) => ad.id == id)
 	}
 
 	return (
@@ -23,14 +23,14 @@ const AdShow = (props) => {
 					<div className="card">
 						<Img
 							className="card-img-top"
-							src={`/storage/${adToShow.pictures}`}
+							src={`/storage/${postToShow.pictures}`}
 							alt="Card image" />
 						<div className="card-body">
-							<h4 className="card-title">{adToShow.title}</h4>
-							<p className="card-text">{adToShow.category}</p>
-							<p className="card-text">{adToShow.features}</p>
-							<p className="card-text text-success">KES {adToShow.price}</p>
-							<p>{adToShow.description}</p>
+							<h4 className="card-title">{postToShow.title}</h4>
+							<p className="card-text">{postToShow.category}</p>
+							<p className="card-text">{postToShow.features}</p>
+							<p className="card-text text-success">KES {postToShow.price}</p>
+							<p>{postToShow.description}</p>
 
 							<hr />
 
@@ -64,4 +64,4 @@ const AdShow = (props) => {
 	)
 }
 
-export default AdShow
+export default PostShow

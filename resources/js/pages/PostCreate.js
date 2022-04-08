@@ -30,7 +30,7 @@ registerPlugin(
 	FilePondPluginFileValidateSize
 );
 
-const AdCreate = (props) => {
+const PostCreate = (props) => {
 
 	// Declare states
 	const [title, setTitle] = useState("")
@@ -55,7 +55,7 @@ const AdCreate = (props) => {
 	const onSubmit = (e) => {
 		e.preventDefault()
 
-		// Add form data to FormData object
+		// Postd form data to FormData object
 		formData.append("title", title);
 		formData.append("category", category);
 		formData.append("features", features);
@@ -64,15 +64,15 @@ const AdCreate = (props) => {
 		formData.append("price", price);
 		formData.append("pictures", pictures);
 
-		// Send data to AdsController
+		// Send data to PostsController
 		// Get csrf cookie from Laravel inorder to send a POST request
 		axios.get('sanctum/csrf-cookie').then(() => {
-			axios.post(`${props.url}/api/ads`, formData)
+			axios.post(`${props.url}/api/posts`, formData)
 				.then((res) => {
 					props.setMessage(res.data)
-					// Update Ads
-					axios.get(`${props.url}/api/ads`)
-						.then((res) => props.setAds(res.data))
+					// Update Posts
+					axios.get(`${props.url}/api/posts`)
+						.then((res) => props.setPosts(res.data))
 					setTimeout(() => history.push('/'), 1000)
 				}).catch(err => {
 					const resErrors = err.response.data.errors
@@ -94,7 +94,7 @@ const AdCreate = (props) => {
 			<div className="col-1"></div>
 			<div className="col-10">
 				<div className="contact-form text-center call-to-action-content wow fadeInUp" data-wow-delay="0.5s">
-					<h2>Upload your Ad</h2>
+					<h2>Upload your Post</h2>
 					<h5>It's free</h5>
 					<br />
 					<div className="form-group">
@@ -150,7 +150,7 @@ const AdCreate = (props) => {
 								type="text"
 								name="description"
 								className="form-control"
-								placeholder="Say something about your Ad"
+								placeholder="Say something about your Post"
 								cols="30"
 								rows="10"
 								required={true}
@@ -182,13 +182,13 @@ const AdCreate = (props) => {
 								server={{
 									url: `${props.url}/api`,
 									process: {
-										url: "/ads",
+										url: "/posts",
 										headers: { 'X-CSRF-TOKEN': token.content },
 										onload: res => setPictures(res),
 										onerror: (err) => console.log(err.response.data)
 									},
 									revert: {
-										url: `/ads/${pictures.substr(4)}`,
+										url: `/posts/${pictures.substr(4)}`,
 										headers: { 'X-CSRF-TOKEN': token.content },
 										onload: res => props.setMessage(res),
 									},
@@ -232,4 +232,4 @@ const AdCreate = (props) => {
 	)
 }
 
-export default AdCreate
+export default PostCreate
