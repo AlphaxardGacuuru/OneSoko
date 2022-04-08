@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
+Auth::routes();
+
 Route::resources([
     'ads' => 'AdsController',
     // 'users' => 'UserController',

@@ -43,26 +43,24 @@ class AdsController extends Controller
 
             return $pictures;
         } else {
-            // Handle form for video
             $this->validate($request, [
                 'title' => 'required|string',
                 'features' => 'required|string',
                 'category' => 'required|string',
                 'description' => 'required|string',
                 'price' => 'required',
-                // 'thumbnail' => 'required',
             ]);
 
             /* Create new ad song */
-            $video = new Ads;
-            $video->title = $request->input('title');
-            $video->features = $request->input('features');
-            // $video->user_id = auth()->user()->id;
-            $video->category = $request->input('category');
-            $video->description = $request->input('description');
-            $video->price = $request->input('price');
-            $video->pictures = $request->input('pictures');
-            $video->save();
+            $ad = new Ads;
+            $ad->title = $request->input('title');
+            $ad->features = $request->input('features');
+            // $ad->user_id = auth()->user()->id;
+            $ad->category = $request->input('category');
+            $ad->description = $request->input('description');
+            $ad->price = $request->input('price');
+            $ad->pictures = $request->input('pictures');
+            $ad->save();
 
             return response('Ad Uploaded', 200);
         }
@@ -97,9 +95,38 @@ class AdsController extends Controller
      * @param  \App\Ads  $ads
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ads $ads)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|string',
+            'features' => 'required|string',
+            'category' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required',
+        ]);
+
+        /* Update Ad */
+        $ad = Ads::find($id);
+
+        if ($request->filled('title')) {
+            $ad->title = $request->input('title');
+        }
+        if ($request->filled('features')) {
+            $ad->features = $request->input('features');
+        }
+        if ($request->filled('category')) {
+            $ad->category = $request->input('category');
+        }
+        if ($request->filled('description')) {
+            $ad->description = $request->input('description');
+        }
+        if ($request->filled('price')) {
+            $ad->price = $request->input('price');
+        }
+
+        $ad->save();
+
+        return response('Ad Edited', 200);
     }
 
     /**

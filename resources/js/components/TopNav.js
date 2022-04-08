@@ -54,7 +54,7 @@ const TopNav = (props) => {
 					<div
 						className="dropdown-menu dropdown-menu-right m-0 p-0"
 						aria-labelledby="dropdownMenuButton">
-						<Link to={`/profile/props.auth.username`} className="p-3 dropdown-item border-bottom">
+						<Link to={`/account/props.auth.username`} className="p-3 dropdown-item border-bottom">
 							<h5>Name</h5>
 						</Link>
 						{/* <Link

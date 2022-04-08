@@ -91899,6 +91899,7 @@ try {
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.withCredentials = true;
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -91932,9 +91933,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TopNav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TopNav */ "./resources/js/components/TopNav.js");
 /* harmony import */ var _Messages__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Messages */ "./resources/js/components/Messages.js");
 /* harmony import */ var _pages_Index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../pages/Index */ "./resources/js/pages/Index.js");
-/* harmony import */ var _pages_AdShow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../pages/AdShow */ "./resources/js/pages/AdShow.js");
-/* harmony import */ var _pages_AdCreate__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../pages/AdCreate */ "./resources/js/pages/AdCreate.js");
-/* harmony import */ var _pages_AdEdit__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../pages/AdEdit */ "./resources/js/pages/AdEdit.js");
+/* harmony import */ var _pages_Account__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../pages/Account */ "./resources/js/pages/Account.js");
+/* harmony import */ var _pages_AdShow__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../pages/AdShow */ "./resources/js/pages/AdShow.js");
+/* harmony import */ var _pages_AdCreate__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../pages/AdCreate */ "./resources/js/pages/AdCreate.js");
+/* harmony import */ var _pages_AdEdit__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../pages/AdEdit */ "./resources/js/pages/AdEdit.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -91957,8 +91959,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function App() {
-  var url = window.location.href.match(/https/) ? 'https://music.black.co.ke' : 'http://localhost:8001';
+  var url = window.location.href.match(/https/) ? 'https://www.onesoko.co.ke' : 'http://localhost:8001';
   axios.defaults.baseURL = url; // Function for checking local storage
 
   var getLocalStorage = function getLocalStorage(state) {
@@ -92047,22 +92050,28 @@ function App() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Index__WEBPACK_IMPORTED_MODULE_5__["default"], GLOBAL_STATE);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/account/:id",
+    exact: true,
+    render: function render(props) {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_Account__WEBPACK_IMPORTED_MODULE_6__["default"], GLOBAL_STATE);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: "/ad/:id",
     exact: true,
     render: function render(props) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_AdShow__WEBPACK_IMPORTED_MODULE_6__["default"], GLOBAL_STATE);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_AdShow__WEBPACK_IMPORTED_MODULE_7__["default"], GLOBAL_STATE);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: "/ad-create",
     exact: true,
     render: function render(props) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_AdCreate__WEBPACK_IMPORTED_MODULE_7__["default"], GLOBAL_STATE);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_AdCreate__WEBPACK_IMPORTED_MODULE_8__["default"], GLOBAL_STATE);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: "/ad-edit/:id",
     exact: true,
     render: function render(props) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_AdEdit__WEBPACK_IMPORTED_MODULE_8__["default"], GLOBAL_STATE);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_AdEdit__WEBPACK_IMPORTED_MODULE_9__["default"], GLOBAL_STATE);
     }
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Messages__WEBPACK_IMPORTED_MODULE_4__["default"], GLOBAL_STATE));
 }
@@ -92270,7 +92279,7 @@ var TopNav = function TopNav(props) {
     className: "dropdown-menu dropdown-menu-right m-0 p-0",
     "aria-labelledby": "dropdownMenuButton"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/profile/props.auth.username",
+    to: "/account/props.auth.username",
     className: "p-3 dropdown-item border-bottom"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Name")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/ad-create",
@@ -92522,6 +92531,47 @@ var TopNav = function TopNav(props) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TopNav);
+
+/***/ }),
+
+/***/ "./resources/js/pages/Account.js":
+/*!***************************************!*\
+  !*** ./resources/js/pages/Account.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+var Account = function Account(props) {
+  // Get user's Ads
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-1"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-10"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+    className: "table table-responsive"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Category"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Features"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Price"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null))), props.ads.map(function (ad, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
+      key: key
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, ad.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, ad.category), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, ad.features), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, ad.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, ad.price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/ad-edit/".concat(ad.id),
+      className: "btn btn-primary onesoko-btn"
+    }, "edit"))));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-sm-1"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Account);
 
 /***/ }),
 
@@ -92817,7 +92867,7 @@ var AdCreate = function AdCreate(props) {
     type: "reset",
     className: "btn btn-danger onesoko-btn"
   }, "reset"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/videos",
+    to: "/account",
     className: "btn btn-dark onesoko-btn"
   }, "go to account")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-1"
@@ -92931,18 +92981,16 @@ var AdEdit = function AdEdit(props) {
   var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
       _useState12 = _slicedToArray(_useState11, 2),
       pictures = _useState12[0],
-      setPictures = _useState12[1];
+      setPictures = _useState12[1]; // Get csrf token
 
-  console.log(pictures); // Get csrf token
 
-  var token = document.head.querySelector('meta[name="csrf-token"]'); // Get history for page location
-
-  var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useHistory"])(); // Declare new FormData object for form data
+  var token = document.head.querySelector('meta[name="csrf-token"]'); // Declare new FormData object for form data
 
   var formData = new FormData();
 
   var onSubmit = function onSubmit(e) {
-    e.preventDefault(); // Add form data to FormData object
+    e.preventDefault();
+    console.log(id); // Add form data to FormData object
 
     formData.append("title", title);
     formData.append("category", category);
@@ -92954,15 +93002,12 @@ var AdEdit = function AdEdit(props) {
     // Get csrf cookie from Laravel inorder to send a POST request
 
     axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('sanctum/csrf-cookie').then(function () {
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(props.url, "/api/ads"), formData).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.put("".concat(props.url, "/api/ads/").concat(id), formData).then(function (res) {
         props.setMessage(res.data); // Update Ads
 
         axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("".concat(props.url, "/api/ads")).then(function (res) {
           return props.setAds(res.data);
         });
-        setTimeout(function () {
-          return history.push('/');
-        }, 1000);
       })["catch"](function (err) {
         var resErrors = err.response.data.errors;
         var resError;
@@ -92998,7 +93043,6 @@ var AdEdit = function AdEdit(props) {
     name: "title",
     className: "form-control",
     placeholder: AdToEdit && AdToEdit.title,
-    required: true,
     onChange: function onChange(e) {
       setTitle(e.target.value);
     }
@@ -93006,7 +93050,6 @@ var AdEdit = function AdEdit(props) {
     name: "category",
     className: "form-control",
     placeholder: AdToEdit && AdToEdit.category,
-    required: true,
     onChange: function onChange(e) {
       setCategory(e.target.value);
     }
@@ -93050,7 +93093,6 @@ var AdEdit = function AdEdit(props) {
     name: "features",
     className: "form-control",
     placeholder: AdToEdit && AdToEdit.features,
-    required: true,
     onChange: function onChange(e) {
       return setFeatures(e.target.value);
     }
@@ -93061,7 +93103,6 @@ var AdEdit = function AdEdit(props) {
     placeholder: AdToEdit && AdToEdit.description,
     cols: "30",
     rows: "10",
-    required: true,
     onChange: function onChange(e) {
       return setDescription(e.target.value);
     }
@@ -93070,7 +93111,6 @@ var AdEdit = function AdEdit(props) {
     name: "price",
     className: "form-control",
     placeholder: AdToEdit && AdToEdit.price,
-    required: true,
     onChange: function onChange(e) {
       return setPrice(e.target.value);
     }
@@ -93108,26 +93148,14 @@ var AdEdit = function AdEdit(props) {
         }
       }
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn btn-primary onesoko-btn",
-    type: "button",
-    "data-toggle": "collapse",
-    "data-target": "#collapseExample",
-    "aria-expanded": "false",
-    "aria-controls": "collapseExample"
-  }, "next"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "collapse",
-    id: "collapseExample"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: ""
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Before you upload"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "By uploading you agree that you ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "own"), "."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Btn__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Btn__WEBPACK_IMPORTED_MODULE_3__["default"], {
     btnClass: "btn btn-success onesoko-btn",
-    text: "upload advertisement"
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    text: "edit advertisement"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "reset",
     className: "btn btn-danger onesoko-btn"
   }, "reset"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/videos",
+    to: "/account",
     className: "btn btn-dark onesoko-btn"
   }, "go to account")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-1"

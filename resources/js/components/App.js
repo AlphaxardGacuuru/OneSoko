@@ -6,6 +6,8 @@ import TopNav from './TopNav';
 import Messages from './Messages';
 
 import Index from '../pages/Index'
+import Account from '../pages/Account'
+
 import AdShow from '../pages/AdShow';
 import AdCreate from '../pages/AdCreate';
 import AdEdit from '../pages/AdEdit';
@@ -13,7 +15,7 @@ import AdEdit from '../pages/AdEdit';
 function App() {
 
 	const url = window.location.href.match(/https/) ?
-		'https://music.black.co.ke' :
+		'https://www.onesoko.co.ke' :
 		'http://localhost:8001'
 
 	axios.defaults.baseURL = url
@@ -81,6 +83,8 @@ function App() {
 			<TopNav {...GLOBAL_STATE} />
 
 			<Route path="/" exact render={(props) => (<Index {...GLOBAL_STATE} />)} />
+			<Route path="/account/:id" exact render={(props) => (<Account {...GLOBAL_STATE} />)} />
+
 			<Route path="/ad/:id" exact render={(props) => (<AdShow {...GLOBAL_STATE} />)} />
 			<Route path="/ad-create" exact render={(props) => (<AdCreate {...GLOBAL_STATE} />)} />
 			<Route path="/ad-edit/:id" exact render={(props) => (<AdEdit {...GLOBAL_STATE} />)} />

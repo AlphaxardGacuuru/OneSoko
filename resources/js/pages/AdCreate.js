@@ -223,7 +223,7 @@ const AdCreate = (props) => {
 						<button type="reset" className="btn btn-danger onesoko-btn">reset</button>
 						<br />
 						<br />
-						<Link to="/videos" className="btn btn-dark onesoko-btn">go to account</Link>
+						<Link to="/account" className="btn btn-dark onesoko-btn">go to account</Link>
 					</div>
 				</div>
 			</div>

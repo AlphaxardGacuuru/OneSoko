@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useHistory, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios';
 
 import Btn from '../components/Btn'
@@ -46,20 +46,15 @@ const AdEdit = (props) => {
 	const [description, setDescription] = useState()
 	const [pictures, setPictures] = useState("")
 
-	console.log(pictures)
-
 	// Get csrf token
 	const token = document.head.querySelector('meta[name="csrf-token"]');
-
-	// Get history for page location
-	const history = useHistory()
 
 	// Declare new FormData object for form data
 	const formData = new FormData();
 
 	const onSubmit = (e) => {
 		e.preventDefault()
-
+console.log(id)
 		// Add form data to FormData object
 		formData.append("title", title);
 		formData.append("category", category);
@@ -72,14 +67,13 @@ const AdEdit = (props) => {
 		// Send data to AdsController
 		// Get csrf cookie from Laravel inorder to send a POST request
 		axios.get('sanctum/csrf-cookie').then(() => {
-			axios.post(`${props.url}/api/ads`, formData)
+			axios.put(`${props.url}/api/ads/${id}`, formData)
 				.then((res) => {
 					props.setMessage(res.data)
 					// Update Ads
 					axios.get(`${props.url}/api/ads`)
 						.then((res) => props.setAds(res.data))
-					setTimeout(() => history.push('/'), 1000)
-				}).catch(err => {
+				}).catch((err) => {
 					const resErrors = err.response.data.errors
 					var resError
 					var newError = []
@@ -108,7 +102,6 @@ const AdEdit = (props) => {
 								name="title"
 								className="form-control"
 								placeholder={AdToEdit && AdToEdit.title}
-								required={true}
 								onChange={(e) => { setTitle(e.target.value) }} />
 							<br />
 							<br />
@@ -117,7 +110,6 @@ const AdEdit = (props) => {
 								name='category'
 								className='form-control'
 								placeholder={AdToEdit && AdToEdit.category}
-								required={true}
 								onChange={(e) => { setCategory(e.target.value) }}>
 								<option defaultValue value="">{AdToEdit && AdToEdit.category}</option>
 								<option value="Vehicles">Vehicles</option>
@@ -145,7 +137,6 @@ const AdEdit = (props) => {
 								name="features"
 								className="form-control"
 								placeholder={AdToEdit && AdToEdit.features}
-								required={true}
 								onChange={(e) => setFeatures(e.target.value)} />
 							<br />
 							<br />
@@ -157,7 +148,6 @@ const AdEdit = (props) => {
 								placeholder={AdToEdit && AdToEdit.description}
 								cols="30"
 								rows="10"
-								required={true}
 								onChange={(e) => setDescription(e.target.value)}>
 							</textarea>
 							<br />
@@ -168,7 +158,6 @@ const AdEdit = (props) => {
 								name="price"
 								className="form-control"
 								placeholder={AdToEdit && AdToEdit.price}
-								required={true}
 								onChange={(e) => setPrice(e.target.value)} />
 							<br />
 							<br />
@@ -200,26 +189,7 @@ const AdEdit = (props) => {
 							<br />
 							<br />
 
-							{/* {{-- Collapse --}} */}
-							<button
-								className="btn btn-primary onesoko-btn"
-								type="button"
-								data-toggle="collapse"
-								data-target="#collapseExample"
-								aria-expanded="false"
-								aria-controls="collapseExample">
-								next
-							</button>
-							<div className="collapse" id="collapseExample">
-								<div className="">
-									<br />
-									<h3>Before you upload</h3>
-									<h6>By uploading you agree that you <b>own</b>.</h6>
-									<br />
-									<Btn btnClass="btn btn-success onesoko-btn" text="upload advertisement" />
-								</div>
-							</div>
-							{/* {{-- Collapse End --}} */}
+							<Btn btnClass="btn btn-success onesoko-btn" text="edit advertisement" />
 						</form>
 						<br />
 						<br />
@@ -227,7 +197,7 @@ const AdEdit = (props) => {
 						<button type="reset" className="btn btn-danger onesoko-btn">reset</button>
 						<br />
 						<br />
-						<Link to="/videos" className="btn btn-dark onesoko-btn">go to account</Link>
+						<Link to="/account" className="btn btn-dark onesoko-btn">go to account</Link>
 					</div>
 				</div>
 			</div>
