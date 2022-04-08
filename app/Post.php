@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ads extends Model
+class Post extends Model
 {
     //
 }
