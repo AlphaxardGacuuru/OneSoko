@@ -93,7 +93,7 @@ const PostCreate = (props) => {
 		<div className="row">
 			<div className="col-1"></div>
 			<div className="col-10">
-				<div className="contact-form text-center call-to-action-content wow fadeInUp" data-wow-delay="0.5s">
+				<div className="contact-form text-center call-to-action-content wow fadeInUp mt-4" data-wow-delay="0.5s">
 					<h2>Upload your Post</h2>
 					<h5>It's free</h5>
 					<br />
@@ -197,8 +197,9 @@ const PostCreate = (props) => {
 							<br />
 
 							{/* {{-- Collapse --}} */}
+							<button type="reset" className="btn btn-danger onesoko-btn mr-2">reset</button>
 							<button
-								className="btn btn-primary onesoko-btn"
+								className="btn btn-primary onesoko-btn ml-2"
 								type="button"
 								data-toggle="collapse"
 								data-target="#collapseExample"
@@ -217,10 +218,6 @@ const PostCreate = (props) => {
 							</div>
 							{/* {{-- Collapse End --}} */}
 						</form>
-						<br />
-						<br />
-
-						<button type="reset" className="btn btn-danger onesoko-btn">reset</button>
 						<br />
 						<br />
 						<Link to="/account" className="btn btn-dark onesoko-btn">go to account</Link>

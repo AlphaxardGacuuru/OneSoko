@@ -97,14 +97,6 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'title' => 'required|string',
-            'features' => 'required|string',
-            'category' => 'required|string',
-            'description' => 'required|string',
-            'price' => 'required',
-        ]);
-
         /* Update Post */
         $post = Post::find($id);
 

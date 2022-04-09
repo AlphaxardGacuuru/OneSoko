@@ -41,20 +41,20 @@ const PostEdit = (props) => {
 	// Declare states
 	const [title, setTitle] = useState("")
 	const [features, setFeatures] = useState("")
-	const [category, setCategory] = useState()
-	const [price, setPrice] = useState()
-	const [description, setDescription] = useState()
+	const [category, setCategory] = useState("")
+	const [price, setPrice] = useState("")
+	const [description, setDescription] = useState("")
 	const [pictures, setPictures] = useState("")
 
 	// Get csrf token
-	const token = document.hepost.querySelector('meta[name="csrf-token"]');
+	const token = document.head.querySelector('meta[name="csrf-token"]');
 
 	// Declare new FormData object for form data
 	const formData = new FormData();
 
 	const onSubmit = (e) => {
 		e.preventDefault()
-		
+
 		// Postd form data to FormData object
 		formData.append("title", title);
 		formData.append("category", category);
@@ -63,11 +63,12 @@ const PostEdit = (props) => {
 		formData.append("description", description);
 		formData.append("price", price);
 		formData.append("pictures", pictures);
+		formData.append("_method", 'put');
 
 		// Send data to PostsController
 		// Get csrf cookie from Laravel inorder to send a POST request
 		axios.get('sanctum/csrf-cookie').then(() => {
-			axios.put(`${props.url}/api/posts/${id}`, formData)
+			axios.post(`${props.url}/api/posts/${id}`, formData)
 				.then((res) => {
 					props.setMessage(res.data)
 					// Update Posts
@@ -92,8 +93,8 @@ const PostEdit = (props) => {
 		<div className="row">
 			<div className="col-1"></div>
 			<div className="col-10">
-				<div className="contact-form text-center call-to-action-content wow fposteInUp" data-wow-delay="0.5s">
-					<h2>Edit your Post</h2>
+				<div className="contact-form text-center call-to-action-content wow fadeInUp mt-4" data-wow-delay="0.5s">
+					<h2>Edit your post</h2>
 					<br />
 					<div className="form-group">
 						<form onSubmit={onSubmit}>
@@ -189,14 +190,12 @@ const PostEdit = (props) => {
 							<br />
 							<br />
 
-							<Btn btnClass="btn btn-success onesoko-btn" text="edit post" />
+							<button type="reset" className="btn btn-danger onesoko-btn mr-2">reset</button>
+							<Btn btnClass="btn btn-success onesoko-btn ml-2" text="edit post" />
 						</form>
 						<br />
 						<br />
 
-						<button type="reset" className="btn btn-danger onesoko-btn">reset</button>
-						<br />
-						<br />
 						<Link to="/account" className="btn btn-dark onesoko-btn">go to account</Link>
 					</div>
 				</div>

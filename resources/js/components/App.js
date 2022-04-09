@@ -4,13 +4,14 @@ import { HashRouter as Router, Route } from 'react-router-dom'
 
 import TopNav from './TopNav';
 import Messages from './Messages';
+import Footer from './Footer';
 
 import Index from '../pages/Index'
 import Account from '../pages/Account'
 
-import AdShow from '../pages/PostShow';
-import AdCreate from '../pages/PostCreate';
-import AdEdit from '../pages/PostEdit';
+import PostShow from '../pages/PostShow';
+import PostCreate from '../pages/PostCreate';
+import PostEdit from '../pages/PostEdit';
 
 function App() {
 
@@ -85,11 +86,12 @@ function App() {
 			<Route path="/" exact render={(props) => (<Index {...GLOBAL_STATE} />)} />
 			<Route path="/account/:id" exact render={(props) => (<Account {...GLOBAL_STATE} />)} />
 
-			<Route path="/post/:id" exact render={(props) => (<AdShow {...GLOBAL_STATE} />)} />
-			<Route path="/post-create" exact render={(props) => (<AdCreate {...GLOBAL_STATE} />)} />
-			<Route path="/post-edit/:id" exact render={(props) => (<AdEdit {...GLOBAL_STATE} />)} />
+			<Route path="/post/:id" exact render={(props) => (<PostShow {...GLOBAL_STATE} />)} />
+			<Route path="/post-create" exact render={(props) => (<PostCreate {...GLOBAL_STATE} />)} />
+			<Route path="/post-edit/:id" exact render={(props) => (<PostEdit {...GLOBAL_STATE} />)} />
 
 			<Messages {...GLOBAL_STATE} />
+			<Footer />
 		</Router>
 	);
 }

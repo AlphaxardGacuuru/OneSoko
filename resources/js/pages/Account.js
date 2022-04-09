@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 
 const Account = (props) => {
 
-	// Get user's Ads
+	// Get user's Posts
 
 	return (
 		<div className="row">
 			<div className="col-sm-1"></div>
 			<div className="col-sm-10">
-				<table className="table table-responsive">
+				<table className="table table-responsive mt-4">
 					<thead>
 						<tr>
 							<th>Title</th>
@@ -21,16 +21,20 @@ const Account = (props) => {
 						</tr>
 					</thead>
 					{props
-						.ads.map((ad, key) => (
+						.posts.map((post, key) => (
 							<tbody key={key}>
 								<tr>
-									<td>{ad.title}</td>
-									<td>{ad.category}</td>
-									<td>{ad.features}</td>
-									<td>{ad.description}</td>
-									<td>{ad.price}</td>
+									<td>{post.title}</td>
+									<td>{post.category}</td>
+									<td>{post.features}</td>
+									<td>{post.description}</td>
+									<td>{post.price}</td>
 									<td>
-										<Link to={`/ad-edit/${ad.id}`} className="btn btn-primary onesoko-btn">edit</Link>
+										<Link
+											to={`/post-edit/${post.id}`}
+											className="btn btn-primary onesoko-btn">
+											edit
+										</Link>
 									</td>
 								</tr>
 							</tbody>

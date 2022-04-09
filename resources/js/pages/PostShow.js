@@ -56,8 +56,6 @@ const PostShow = (props) => {
 						</div>
 					</div>
 				</center>
-				<br />
-				<br />
 			</div>
 			<div className="col-sm-1"></div>
 		</div>

@@ -64,7 +64,7 @@ const TopNav = (props) => {
 							className="p-3 dropdown-item border-bottom">
 							<h6>Get App</h6>
 						</Link> */}
-						<Link to='/ad-create' className="p-3 dropdown-item border-bottom">
+						<Link to='/post-create' className="p-3 dropdown-item border-bottom">
 							<h6>Advertise</h6>
 						</Link>
 						<Link to='/settings' className="p-3 dropdown-item border-bottom">
