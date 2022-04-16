@@ -7,6 +7,51 @@ a:hover {
 	text-decoration: none;
 }
 
+/*remove extra padding/margin for rows on small screens*/
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .row {
+        margin: 0;
+    }
+
+    .col-sm-4 {
+        padding: 0;
+    }
+
+    .col-sm-3 {
+        padding: 0;
+    }
+
+    .col-sm-7 {
+        padding: 0;
+    }
+
+    .col-sm-12 {
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .row {
+        margin: 0;
+    }
+
+    .col-sm-4 {
+        padding: 0;
+    }
+
+    .col-sm-3 {
+        padding: 0;
+    }
+
+    .col-sm-7 {
+        padding: 0;
+    }
+
+    .col-sm-12 {
+        padding: 0;
+    }
+}
+
 .top-nav { 
 	background-color: #0275D8;
 	position: fixed;

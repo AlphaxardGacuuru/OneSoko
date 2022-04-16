@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::resources([
+	'home' => 'HomeController',
+    'users' => 'UserController',
     'posts' => 'PostController',
-    // 'users' => 'UserController',
 ]);

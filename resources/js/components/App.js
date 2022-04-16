@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Route } from 'react-router-dom'
+import axios from 'axios'
 
 import TopNav from './TopNav';
 import Messages from './Messages';
 import Footer from './Footer';
+
+import Login from '../auth/Login';
+import Register from '../auth/Register';
 
 import Index from '../pages/Index'
 import Account from '../pages/Account'
@@ -40,10 +44,8 @@ function App() {
 	const [auth, setAuth] = useState(localStorage.getItem("auth") ?
 		JSON.parse(localStorage.getItem("auth")) :
 		{
+			"id": "1",
 			"name": "Guest",
-			"username": "@guest",
-			"pp": "/storage/profile-pics/male_avatar.png",
-			"account_type": "normal"
 		})
 	const [message, setMessage] = useState('')
 	const [errors, setErrors] = useState([])
@@ -82,6 +84,8 @@ function App() {
 	return (
 		<Router>
 			<TopNav {...GLOBAL_STATE} />
+			<Route path="/login" exact render={(props) => (<Login {...GLOBAL_STATE} />)} />
+			<Route path="/register" exact render={(props) => (<Register {...GLOBAL_STATE} />)} />
 
 			<Route path="/" exact render={(props) => (<Index {...GLOBAL_STATE} />)} />
 			<Route path="/account/:id" exact render={(props) => (<Account {...GLOBAL_STATE} />)} />

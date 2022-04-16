@@ -34,6 +34,7 @@
         "filepond-plugin-image-transform": "^3.8.7",
         "filepond-plugin-image-validate-size": "^1.2.7",
         "react-filepond": "^7.1.1",
-        "react-router-dom": "^5.2.0"
+        "react-router-dom": "^5.2.0",
+        "react-social-login-buttons": "^3.6.0"
     }
 }
