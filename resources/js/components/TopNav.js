@@ -36,7 +36,7 @@ const TopNav = (props) => {
 		display = "none" : display = ""
 
 	return (
-		<div style={{ display: "none" }}>
+		<div style={{ display: display }}>
 			<div className="d-flex justify-content-between top-nav">
 				<div className="p-2 flex-grow-1">
 					<Link to="/" className="text-light">One Soko</Link>

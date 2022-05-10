@@ -8,7 +8,6 @@ import Messages from './Messages';
 import Footer from './Footer';
 
 import Login from '../auth/Login';
-import Register from '../auth/Register';
 
 import Index from '../pages/Index'
 import Account from '../pages/Account'
@@ -85,7 +84,6 @@ function App() {
 		<Router>
 			<TopNav {...GLOBAL_STATE} />
 			<Route path="/login" exact render={(props) => (<Login {...GLOBAL_STATE} />)} />
-			<Route path="/register/:name/:email/:avatar" exact render={(props) => (<Register {...GLOBAL_STATE} />)} />
 
 			<Route path="/" exact render={(props) => (<Index {...GLOBAL_STATE} />)} />
 			<Route path="/account/:id" exact render={(props) => (<Account {...GLOBAL_STATE} />)} />
