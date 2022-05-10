@@ -34,7 +34,7 @@ const TopNav = (props) => {
 	// Hide TopNav from various pages
 	location.pathname.match("/login") ?
 		display = "none" : display = ""
-
+		
 	return (
 		<div style={{ display: display }}>
 			<div className="d-flex justify-content-between top-nav">
@@ -42,7 +42,7 @@ const TopNav = (props) => {
 					<Link to="/" className="text-light">One Soko</Link>
 				</div>
 
-				{props.auth.name == "Guest" ?
+				{!props.auth.name ?
 					<div className="p-2">
 						<Link to="/login" className="p-2 text-light">Login</Link>
 					</div> :

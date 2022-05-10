@@ -37,15 +37,15 @@ const PostShow = (props) => {
 							{/* User Area */}
 							<div className="d-flex justify-content-center">
 								<div className="p-2">
-									<Link to="/">
+									<Link to={`/account/${postToShow.user_id}`}>
 										<Img
-											src="storage/img/male_avatar.png"
+											src={postToShow.profile_picture}
 											imgClass="rounded-circle"
 											width="40px"
 											height="40px" />
 									</Link>
 								</div>
-								<div className="p-2">Name</div>
+								<div className="p-2">{postToShow.name}</div>
 								<div className="p-2">
 									<Btn
 										btnClass="btn btn-success onesoko-btn"

@@ -15,7 +15,28 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::all();
+        $getPosts = Post::all();
+
+        $posts = [];
+
+        // Populate array for posts
+        foreach ($getPosts as $post) {
+            array_push($posts, [
+                "id" => $post->id,
+                "user_id" => $post->user_id,
+				"name" => $post->user->name,
+				"pp" => $post->user->profile_picture,
+                "title" => $post->title,
+                "category" => $post->category,
+                "features" => $post->features,
+                "description" => $post->description,
+                "pictures" => $post->pictures,
+                "price" => $post->price,
+                "created_at" => $post->created_at,
+            ]);
+        }
+		
+		return $posts;
     }
 
     /**

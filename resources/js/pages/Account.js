@@ -21,7 +21,9 @@ const Account = (props) => {
 						</tr>
 					</thead>
 					{props
-						.posts.map((post, key) => (
+						.posts
+						.filter((post) => post.user_id == props.auth.id)
+						.map((post, key) => (
 							<tbody key={key}>
 								<tr>
 									<td>{post.title}</td>

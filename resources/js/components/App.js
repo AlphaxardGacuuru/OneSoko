@@ -40,12 +40,7 @@ function App() {
 
 	// Declare states
 	const [login, setLogin] = useState()
-	const [auth, setAuth] = useState(localStorage.getItem("auth") ?
-		JSON.parse(localStorage.getItem("auth")) :
-		{
-			"id": "1",
-			"name": "Guest",
-		})
+	const [auth, setAuth] = useState([])
 	const [message, setMessage] = useState('')
 	const [errors, setErrors] = useState([])
 
