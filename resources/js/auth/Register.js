@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 import Btn from '../components/Btn';
 
 const Register = (props) => {
 
-	const [name, setName] = useState()
-	const [email, setEmail] = useState()
+	let { name, email, avatar } = useParams();
+
 	const [phone, setPhone] = useState()
+
+	// Remove all spaces from avatar
+	avatar = avatar.replace(/\s/g, "/")
 
 	const onRegister = (e) => {
 		e.preventDefault()
@@ -19,6 +22,7 @@ const Register = (props) => {
 				name: name,
 				email: email,
 				phone: phone,
+				profile_picture: avatar,
 				password: phone,
 				password_confirmation: phone,
 			}).then((res) => {
@@ -46,41 +50,15 @@ const Register = (props) => {
 		<div className="row">
 			<div className="col-sm-4"></div>
 			<div className="col-sm-4">
+				<h3 style={{ textAlign: "center" }}>You're almost done</h3>
+				<br />
 				<div className="card m-2">
 					<div className="card-header">
-						<h4>Register</h4>
+						<h4>Register your phone number</h4>
 					</div>
 
 					<div className="card-body contact-form">
 						<form onSubmit={onRegister}>
-							<label htmlFor="name">
-								<p>Name</p>
-							</label>
-
-							<input
-								id="name"
-								type="text"
-								className="form-control"
-								name="name"
-								placeholder="John Doe"
-								onChange={(e) => setName(e.target.value)}
-								required />
-							<br />
-
-							<label htmlFor="email">
-								<p>Email</p>
-							</label>
-
-							<input
-								id="email"
-								type="text"
-								className="form-control"
-								name="email"
-								placeholder="Email"
-								onChange={(e) => setEmail(e.target.value)}
-								required />
-							<br />
-
 							<label htmlFor="phone">
 								<p>Enter your Mpesa number</p>
 							</label>
@@ -90,7 +68,7 @@ const Register = (props) => {
 								type="text"
 								className="form-control"
 								name="phone"
-								placeholder="07"
+								placeholder="0700123456"
 								onChange={(e) => setPhone(e.target.value)}
 								required />
 							<br />

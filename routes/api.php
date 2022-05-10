@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// Social logins
+Route::get('login/{website}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{website}/callback', 'Auth\LoginController@handleProviderCallback');
+
 Route::resources([
 	'home' => 'HomeController',
     'users' => 'UserController',

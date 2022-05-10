@@ -85,7 +85,7 @@ function App() {
 		<Router>
 			<TopNav {...GLOBAL_STATE} />
 			<Route path="/login" exact render={(props) => (<Login {...GLOBAL_STATE} />)} />
-			<Route path="/register" exact render={(props) => (<Register {...GLOBAL_STATE} />)} />
+			<Route path="/register/:name/:email/:avatar" exact render={(props) => (<Register {...GLOBAL_STATE} />)} />
 
 			<Route path="/" exact render={(props) => (<Index {...GLOBAL_STATE} />)} />
 			<Route path="/account/:id" exact render={(props) => (<Account {...GLOBAL_STATE} />)} />

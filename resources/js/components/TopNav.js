@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import Img from "../components/Img";
 
 const TopNav = (props) => {
 
 	const [menu, setMenu] = useState("")
+
+	const location = useLocation()
 
 	const logout = (e) => {
 		e.preventDefault()
@@ -27,8 +29,14 @@ const TopNav = (props) => {
 	// Function to get to Privacy Policy
 	const onPrivacyPolicy = () => window.location.href = "https://www.iubenda.com/privacy-policy/38639633"
 
+	var display
+
+	// Hide TopNav from various pages
+	location.pathname.match("/login") ?
+		display = "none" : display = ""
+
 	return (
-		<>
+		<div style={{ display: "none" }}>
 			<div className="d-flex justify-content-between top-nav">
 				<div className="p-2 flex-grow-1">
 					<Link to="/" className="text-light">One Soko</Link>
@@ -37,7 +45,6 @@ const TopNav = (props) => {
 				{props.auth.name == "Guest" ?
 					<div className="p-2">
 						<Link to="/login" className="p-2 text-light">Login</Link>
-						<Link to="/register" className="p-2 text-light">Register</Link>
 					</div> :
 					<div className="p-2 dropdown">
 						{/* Avatar Dropdown */}
@@ -357,7 +364,7 @@ const TopNav = (props) => {
 					</div>
 				</div>
 			</nav>
-		</>
+		</div>
 	)
 }
 
