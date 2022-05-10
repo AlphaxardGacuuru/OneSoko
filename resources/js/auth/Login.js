@@ -29,7 +29,8 @@ const Login = (props) => {
 						<TwitterLoginButton
 							className="mt-2 pl-3"
 							style={{ borderRadius: "30px" }}
-							onClick={() => onSocial("twitter")} />
+							// onClick={() => onSocial("twitter")}
+							 />
 						<br />
 					</div>
 				</div>
