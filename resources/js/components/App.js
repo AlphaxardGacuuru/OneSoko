@@ -60,6 +60,11 @@ function App() {
 
 	// Fetch data on page load
 	useEffect(() => {
+		// Fetch Auth
+		axios.get('api/home')
+			.then((res) => setAuth(res.data))
+			.catch(() => setErrors(["Failed to fetch Auth"]))
+
 		// Fetch Posts
 		axios.get(`/api/posts`)
 			.then((res) => {

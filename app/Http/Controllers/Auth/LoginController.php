@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
-use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
 {
@@ -74,6 +74,11 @@ class LoginController extends Controller
                 'email' => $user->getEmail(),
                 'profile_picture' => $user->getAvatar(),
             ]);
+
+            // Get user and log in
+            $user = User::where("email", $user->getEmail())->first();
+
+            Auth::login($user, true);
 
             return redirect("/");
         }

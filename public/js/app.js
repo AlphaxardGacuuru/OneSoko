@@ -92094,7 +92094,13 @@ function App() {
 
 
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    // Fetch Posts
+    // Fetch Auth
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.get('api/home').then(function (res) {
+      return setAuth(res.data);
+    })["catch"](function () {
+      return setErrors(["Failed to fetch Auth"]);
+    }); // Fetch Posts
+
     axios__WEBPACK_IMPORTED_MODULE_3___default.a.get("/api/posts").then(function (res) {
       setPosts(res.data);
     })["catch"](function () {
