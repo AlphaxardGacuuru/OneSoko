@@ -1,8 +1,5 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import axios from 'axios'
+import React from 'react'
 
-import Btn from '../components/Btn';
 import {
 	GoogleLoginButton,
 	FacebookLoginButton,
@@ -10,8 +7,6 @@ import {
 } from "react-social-login-buttons";
 
 const Login = (props) => {
-
-	const history = useHistory()
 
 	const onSocial = (website) => {
 		window.location.href = `${props.url}/api/login/${website}`

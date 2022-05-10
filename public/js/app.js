@@ -91892,21 +91892,12 @@ __webpack_require__(/*! ./components/App */ "./resources/js/components/App.js");
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_Btn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Btn */ "./resources/js/components/Btn.js");
-/* harmony import */ var react_social_login_buttons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-social-login-buttons */ "./node_modules/react-social-login-buttons/dist/index.js");
-/* harmony import */ var react_social_login_buttons__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_social_login_buttons__WEBPACK_IMPORTED_MODULE_4__);
-
-
-
+/* harmony import */ var react_social_login_buttons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-social-login-buttons */ "./node_modules/react-social-login-buttons/dist/index.js");
+/* harmony import */ var react_social_login_buttons__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_social_login_buttons__WEBPACK_IMPORTED_MODULE_1__);
 
 
 
 var Login = function Login(props) {
-  var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useHistory"])();
-
   var onSocial = function onSocial(website) {
     window.location.href = "".concat(props.url, "/api/login/").concat(website);
   };
@@ -91923,7 +91914,7 @@ var Login = function Login(props) {
     className: "card-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "Login")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body contact-form"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_social_login_buttons__WEBPACK_IMPORTED_MODULE_4__["GoogleLoginButton"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_social_login_buttons__WEBPACK_IMPORTED_MODULE_1__["GoogleLoginButton"], {
     className: "mt-2 pl-3",
     style: {
       borderRadius: "30px"
@@ -91931,7 +91922,7 @@ var Login = function Login(props) {
     onClick: function onClick() {
       return onSocial("google");
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_social_login_buttons__WEBPACK_IMPORTED_MODULE_4__["TwitterLoginButton"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_social_login_buttons__WEBPACK_IMPORTED_MODULE_1__["TwitterLoginButton"], {
     className: "mt-2 pl-3",
     style: {
       borderRadius: "30px"
