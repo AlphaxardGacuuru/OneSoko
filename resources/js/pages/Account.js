@@ -1,9 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const Account = (props) => {
 
 	// Get user's Posts
+	let { id } = useParams()
 
 	return (
 		<div className="row">
@@ -22,7 +23,7 @@ const Account = (props) => {
 					</thead>
 					{props
 						.posts
-						.filter((post) => post.user_id == props.auth.id)
+						.filter((post) => post.user_id == id)
 						.map((post, key) => (
 							<tbody key={key}>
 								<tr>
@@ -32,11 +33,12 @@ const Account = (props) => {
 									<td>{post.description}</td>
 									<td>{post.price}</td>
 									<td>
-										<Link
-											to={`/post-edit/${post.id}`}
-											className="btn btn-primary onesoko-btn">
-											edit
-										</Link>
+										{props.auth.id &&
+											<Link
+												to={`/post-edit/${post.id}`}
+												className="btn btn-primary onesoko-btn">
+												edit
+											</Link>}
 									</td>
 								</tr>
 							</tbody>
